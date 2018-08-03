@@ -1,0 +1,245 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{%block title %}{% endblock %} </title>
+    <meta name="description" content="Sufee Admin - HTML5 Admin Template">
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <link rel="apple-touch-icon" href="apple-icon.png">
+  <link rel="shortcut icon" href="{{url}}views/images/favicon.png">
+    <link rel="stylesheet" href="{{url}}views/assets/css/normalize.css">
+    <link rel="stylesheet" href="{{url}}views/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{url}}views/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{url}}views/assets/css/themify-icons.css">
+    <link rel="stylesheet" href="{{url}}views/assets/css/flag-icon.min.css">
+    <link rel="stylesheet" href="{{url}}views/assets/css/cs-skin-elastic.css">
+    <!-- <link rel="stylesheet" href="assets/css/bootstrap-select.less"> -->
+    <link rel="stylesheet" href="{{url}}views/assets/scss/style.css">
+       
+    <link href="{{url}}views/assets/css/lib/vector-map/jqvmap.min.css" rel="stylesheet">
+   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> --> 
+ <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    
+      <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src=”https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js“></script>
+    
+  <style>
+     
+    .navbar-default{
+      background-color: #272c33; 
+     border-color:#272c33;
+   
+     }
+.table-responsive>.table-bordered {
+    border: 1px solid #ddd; 
+}
+
+    @media screen and (max-width: 375px){        
+     }
+     .navbar-toggler {
+    padding: .25rem .75rem;
+    font-size: 1.25rem;
+    line-height: 1;
+    background-color: white;
+    border: 1px solid white;
+    border-radius: .25rem;
+}
+.navbar-brand {
+  height: auto;
+}
+.navbar-nav {
+    margin: 7.5px;
+}
+@media (max-width: 1024px){
+    aside.left-panel {
+     
+}
+}
+@media (max-width: 1024px){
+   div.right-panel {
+    padding: 0 0px;   
+}
+}
+@media (max-width: 575.99px){
+    
+aside.left-panel .navbar .navbar-brand {
+    border-bottom: none;
+    display: inline-block;
+       margin-left: 30%;
+ 
+    line-height:1;
+    margin-top:-40px;
+    margin-bottom:-40px;
+    min-height: inherit;
+}
+aside.left-panel .navbar .navbar-toggler {
+   
+    margin-right: 8px;
+}
+aside.left-panel .navbar .navbar-header {
+    height: 80px;
+}
+}
+@media (min-width: 768px)and (max-width: 1024px){
+.col-md-3 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 16.666667%;
+    flex: 0 0 100%;
+    max-width: 100%;
+  
+}
+}
+#bastarih{
+line-height: 20px;
+-webkit-appearance: searchfield; 
+padding-left:8px;
+border:1px solid #a6a6a6;
+background-color:rgba(0,0,0,.03);
+border-radius: 2px;
+}
+#bittarih{
+line-height: 20px;
+-webkit-appearance: searchfield; 
+padding-left:8px;
+border:1px solid #a6a6a6;
+background-color:rgba(0,0,0,.03);
+border-radius: 2px;
+}
+
+.grupadi{
+padding-left:8px;
+padding-top:3px;
+padding-bottom:3px;
+    width: 150px;
+border:1px solid #a6a6a6;
+background-color:rgba(0,0,0,.03);
+border-radius: 2px;
+
+    line-height: 20px;
+    
+}
+.veriformu{
+    margin-bottom:20px;
+   border: 1px solid transparent;
+}
+.row {
+    margin-left: -10px;
+    margin-right: -15px;
+}
+.grup {
+    width: 100%;
+}
+@media (max-width: 812px){
+.table-responsive>.table>thead>tr>th, .table-responsive>.table>tbody>tr>th, .table-responsive>.table>tfoot>tr>th, .table-responsive>.table>thead>tr>td, .table-responsive>.table>tbody>tr>td, .table-responsive>.table>tfoot>tr>td {
+    white-space: nowrap;
+}
+}
+.badge{
+    background-color: #d9534f;
+}
+
+  </style>
+</head>
+<body>
+        <!-- Left Panel -->
+    <aside id="left-panel" class="left-panel">
+        <nav class="navbar navbar-expand-sm navbar-default">
+
+            <div class="navbar-header">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="./"><img src="{{url}}views/images/logo4_transparent.png" alt="Logo"></a>
+                
+            </div>
+
+            <div id="main-menu" class="main-menu collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                  <a href="{{url}}Home"> <i class="menu-icon fa fa-home"></i>Anasayfa</a>
+                    </li>
+                      {% for modul in modul %}
+                      {%for id,izin in modulgoruntule%}
+                      {%for key,value in izin%}
+                      {%if modul.id == id %}
+                       {% if value.Goruntule =='1' %} 
+                     <li class="active">
+                        <a href="{{url}}{{modul.modul_link}} "> <i class="menu-icon fa fa-{{modul.modul_icon}}"></i> {{modul.modul_adi}}</a>
+                    </li> 
+                     {% endif %}
+                        {%endif%}
+                        {%endfor%}
+                        {%endfor%}
+               {%endfor%}
+                                      
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </nav>
+    </aside><!-- /#left-panel -->
+    <!-- Left Panel -->
+    <!-- Right Panel -->
+
+    <div id="right-panel" class="right-panel">
+
+        <!-- Header-->
+        <header id="header" class="header">
+            <div class="header-menu">		
+                <div class="col-sm-7"></div>
+                <div class="col-sm-5">
+                    <div class="user-area dropdown float-right">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img class="user-avatar rounded-circle" src="{{url}}views/images/avatar/2.jpg" alt="User Avatar">
+                        </a>
+                          
+                           <div class="user-menu dropdown-menu">                              
+                                <li class="disabled"> <a class="nav-link" href="#"><span class="glyphicon glyphicon-user"></span> Profilim</a></li>
+                                <li class="disabled">  <a class="nav-link" href="#"><span class="glyphicon glyphicon-bell" ></span> Bildirimler <span class="badge">10</span></a></li>
+                                 <li class="disabled">  <a class="nav-link" href="#"><span class="glyphicon glyphicon-cog"></span> Ayarlar</a></li>
+                                  <li class="divider"></li>
+                                  <li > <a class="nav-link" href="{{url}}Login/Logout"><span class="glyphicon glyphicon-log-out"></span> Çıkış Yap</a></li>
+                        </div>
+                        
+                          <div style="color: #f1f2f7;float: right;margin: 7px 20px 0 0;">
+                                
+                            <h style="width:auto; color:black; font-size:14px; "> {{isim}} </h> 
+                           
+                     
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </header><!-- /header -->
+        <!-- Header-->
+        <div class="breadcrumbs">
+            <div class="col-sm-5">
+                <div class="page-header float-left">
+                    <div class="page-title">
+                        <h1>    {% block h1 %} Anasayfa{% endblock %} </h1> 
+                   
+                   </div>
+                </div>
+            </div>
+            <div class="col-sm-7 ">
+              {% block col %} {%endblock%}
+            </div> 
+           
+        </div>
+        <div class="content mt-3">
+     {% block content %} {%  endblock%}
+        </div> <!-- .content -->
+    </div><!-- /#right-panel -->
+
+    <!-- Right Panel -->
+
+</body>
+</html>

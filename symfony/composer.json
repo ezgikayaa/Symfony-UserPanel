@@ -1,0 +1,21 @@
+{
+    "autoload" : {
+        "psr-4" :{
+            "TowerUIX\\" : "app/"
+        }
+    },
+    "require": {
+        "nesbot/carbon": "^1.21",
+        "guzzlehttp/guzzle": "^6.1",
+        "php-activerecord/php-activerecord": "^1.1",
+        "mobiledetect/mobiledetectlib": "^2.8",
+        "socalnick/orchestrate-php-client": "^0.6.0",
+        "twig/twig": "~1.0",
+        "wildbit/postmark-php": "^2.2",
+        "symfony/filesystem": "^3.0",
+        "cocur/slugify": "^2.0",
+        "monolog/monolog": "^1.18",
+        "gregwar/captcha": "^1.1",
+	     "phpmailer/phpmailer": "^6.0"
+    }
+}

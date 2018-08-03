@@ -1,0 +1,110 @@
+{% extends "Layout.twig" %}
+{%block title %}Kullanıcı Grupları{% endblock %} 
+{%block h1 %} Grup Tablosu {%endblock %}
+{%block col %}
+    <div class="page-header float-right">
+        <div class="page-title">
+            <ol class="breadcrumb text-right">
+                <li><a href="{{url}}Home">Anasayfa</a></li>
+                <li class="active">Kullanıcı Grupları</li>
+            </ol>
+        </div>
+    </div>
+{%endblock %}
+{% block content %}
+    <div class="animated fadeIn">
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">                       
+                        {% if EkleYetki == '1' %} 
+                            <a href="{{url}}Groups/AddGroups" class="btn btn-danger pull-right btn-sm"><i class="fa fa-plus"></i> Grup Ekle</a> 
+                        {% endif %}
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive"> 
+                        <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Grup Adı</th>
+                                    <th style="width: 300px;"> Grubu Oluşturan Kişi</th>
+                                    <th style="width: 300px;">  Grup Oluşturma Tarihi </th>
+                                        {% if  SilYetki == '1' or DuzenleYetki == '1' %}
+                                        <th style="width:65px;"></th>
+                                        {% endif %}
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for Group in Groups %}
+                                    <tr> 
+                                        <td>{{ Group.Group_Name }}</td>
+                                        <td style="width: 200px;">{{ Group.Group_Olusturan_ID }}</td>
+                                        <td>{{ Group.Group_Tarih}} </td>
+
+                                        {% if  SilYetki == '1' and DuzenleYetki == '1' %}  
+                                            <td style="width: 110px;">
+                                            {%elseif SilYetki == '1' or DuzenleYetki == '1'%}
+                                            <td style ="width:65px">
+                                            {%endif%}
+                                            {% if SilYetki == '1' %} <a href="#"  class="btn btn-warning" aria-expanded="false" aria-hidden="true" onclick="sil({{Group.Group_ID}})" ><i class="fa fa-trash-o"></i> </a> {%endif%} &nbsp 
+                                            {%if DuzenleYetki == '1' %}  <a href="{{url}}Groups/UpdateGroups?id={{Group.Group_ID}}" class="btn btn-success" aria-expanded="false" aria-hidden="true"> <i class="fa fa-pencil-square-o" ></i> {%endif%}
+
+                                        </td>   
+
+
+                                    </tr>
+                                {% endfor %}    
+                            </tbody>
+                        </table>
+                       </div>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.6/sweetalert2.min.css'>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.6/sweetalert2.js'></script>
+
+
+        <script>
+                                                function sil(id) {
+                                                    swal({
+                                                        title: 'Silmek İstediğinize Emin Misiniz?',
+                                                        text: "Silinen veriler geri alınamaz!",
+                                                        type: 'warning',
+                                                        buttons: true,
+                                                        dangerMode: true,
+                                                        showCancelButton: true,
+                                                        confirmButtonColor: '#3085d6',
+                                                        cancelButtonColor: '#d33',
+                                                        cancelButtonText: "Hayır,Silme!",
+                                                        confirmButtonText: 'Evet,Sil!',
+                                                        showLoaderOnConfirm: true
+
+                                                    })
+                                                            .then(function () {
+
+                                                                $.ajax({
+                                                                    type: "GET",
+                                                                    url: "{{url}}Groups/DeleteGroups/" + id,
+                                                                    context: document.body,
+                                                                    global: false,
+                                                                    async: false,
+                                                                    success: function () {
+                                                                        swal("Silindi!", "Kullanıcı başarıyla silindi", "success");
+                                                                        setTimeout(function () {
+                                                                            location.reload();
+                                                                        }, 1000);
+                                                                    }
+
+
+                                                                })
+
+                                                            });
+                                                }
+
+        </script>
+
+    {% endblock %}

@@ -1,0 +1,97 @@
+{% extends 'Layout.twig' %}
+{%block title %}Log Sayfası{% endblock %} 
+{%block h1 %} Log Sayfası{%endblock %}
+{%block col %}
+    <div class="page-header float-right">
+        <div class="page-title">
+            <ol class="breadcrumb text-right">
+                <li><a href="{{url}}Home">Anasayfa</a></li>
+                <li class="active">Log Sayfası</li>
+
+            </ol>
+        </div>
+    </div>
+
+{%endblock %}
+{% block content %}
+
+    <div class="animated fadeIn">    
+        <div class="row"> 
+            <div class="col-xs-12 col-sm-12">
+                <form method="post" class="veriformu" id="veriformu" action="{{url}}Log/Arama">                     
+                    <div class="form-group" > 
+                        <div class="row" style=" float:right;">                       
+                           <div class="col-md-12 ">                                          
+            <i style="width:30px;margin-bottom:3px;padding:2px 0px; "class=" btn btn-sm btn-primary fa fa-calendar" aria-hidden="false"></i>
+             <input type="text" name="bastarih" id="bastarih" placeholder="Başlangıç Tarihi" value="{{bastarih}}"/>
+                   <i class="fa fa-calendar-minus-o"></i>                               
+              <input  type="text" name="bittarih" id="bittarih" placeholder="Bitiş Tarihi" value="{{bittarih}}"/> &nbsp;&nbsp;             
+              <i style="width:30px;margin-bottom:3px;padding:2px 0px; "class=" btn btn-sm btn-primary fa fa-users" aria-hidden="false"></i>
+              <select  class="grupadi" name="grupadi">  
+                                    <option></option>
+                                    {% for SelectGroup in Groups %}                                
+                                        <option value="{{SelectGroup.Group_Name}}"{% if grupadi2==SelectGroup.Group_Name %} selected {% endif %}>{{SelectGroup.Group_Name}}</option>                 
+                                    {% endfor %}                                  
+                 </select>
+      <button style="width:30px;margin-bottom:3px;padding:3px 0px" type="submit" id="arabutonu" class="btn btn-primary btn-sm" name="arabutonu"><i class="fa fa-search"></i></button>              
+                            </div>
+                        </div>
+                    </div>                   
+                </form>
+                <div class="card">
+                    <div class="card-header">
+                        <strong>Tüm Log Kayıtları</strong> 
+                    </div>                    
+                    <div class="card-body card-block">                                            
+                        <div style="width:100%;height: 500px; overflow-y:auto; overflow-x: hidden;">
+                            <div class="form-group" id="form">  
+                                {% for Log in Logs %}
+                                    <div class="row" style="border-bottom: 1px solid #eee;padding: 10px 0px;margin-left: -10px;">                                        
+                                        <div class="col-md-9">
+                                            <button style="width:30px;margin:0;padding:0;" class="btn btn-sm btn-{{Log.Log_ActionClass}}"><i class="fa fa-{{Log.Log_Action}}" aria-hidden="true"></i></button>
+                                            &nbsp;   <b>{{Log.Log_UyeAdi}}</b> &nbsp;{{Log.Log_Mesaj}}
+                                        </div>
+                                        <div class="col-md-3" style="text-align:right;padding-right: 30px">
+                                            {{Log.Log_Tarih}}
+                                        </div>                                         
+                                    </div>
+
+                                {% endfor %}
+                            </div>       
+                        </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div><!-- .animated -->
+
+    <script>
+        $(function () {
+            $("#bastarih").datepicker({dateFormat: "dd.mm.yy",
+                monthNames: ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"],
+                dayNamesMin: ["Pa", "Pt", "Sa", "Ça", "Pe", "Cu", "Ct"],
+                firstDay: 1});
+
+            $("#bittarih").datepicker({dateFormat: "dd.mm.yy",
+                monthNames: ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"],
+                dayNamesMin: ["Pa", "Pt", "Sa", "Ça", "Pe", "Cu", "Ct"],
+                firstDay: 1});
+        });
+        $(document).ready(function () {
+            $("submit").click(function () {
+
+                $.ajax({
+                    type: 'POST',
+                    url: "{{url}}Log/Arama",
+                    data: $('#veriformu').serialize(),
+                    success: function (result) {
+                        $('#form').html(result);
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,26 @@
+{
+    "name": "socalnick/orchestrate-php-client",
+    "description": "A PHP client for Orchestrate.io",
+    "license": "BSD 3-Clause",
+    "authors": [
+        {
+            "name": "Nicholas Calugar",
+            "email": "njcalugar@gmail.com"
+        }
+    ],
+    "keywords": ["orchestrate", "client", "guzzle"],
+    "require": {
+        "php": ">=5.5.0",
+        "ext-curl": "*",
+        "guzzlehttp/guzzle": "~6.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "3.7.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "SocalNick\\Orchestrate\\": "src/",
+            "SocalNick\\Orchestrate\\Tests\\": "tests/"
+        }
+    }
+}

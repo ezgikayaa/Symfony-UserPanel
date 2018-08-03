@@ -1,0 +1,82 @@
+{% extends "Layout.twig" %}
+{%block title %}Kullanıcı Düzenle{% endblock %} 
+{%block col %}
+  <div class="page-header float-right">
+                    <div class="page-title">
+                        <ol class="breadcrumb text-right">
+                           <li><a href="{{url}}Home">Anasayfa</a></li>
+                                <li><a href="{{url}}Users">Kullanıcılar</a></li>
+                                <li class="active">Kullanıcı Düzenle</li>
+                        </ol>
+                    </div>
+                </div>
+    {%endblock %}
+{% block content %}
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12">
+
+                <div class="card">
+                    <div class="card-header">
+                        <strong>Kullanıcı Düzenle</strong> 
+                    </div>
+                    <div class="card-body card-block">
+                        <form method="post" class="panel">
+                            <div class="form-group">
+                                <label class=" form-control-label">Grup Seçiniz</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="fa fa-users"></i></div>                   
+                                    <select  class="grup" name="grup">
+                                        <option></option>
+                                        <a href="UpdateUsers/Grup"> </a>
+                                        {% for SelectGroup in Groups %}                                            
+                                                <option value="{{SelectGroup.Group_ID}}" {% if Users.grupid == SelectGroup.Group_ID  %} selected {%endif %}>{{SelectGroup.Group_Name}}</option>                                        
+                                        {% endfor %}  
+                                    </select>
+                                </div>
+                            </div>             
+                            <div class="form-group" >  
+                                <label class=" form-control-label">Ad-Soyad Giriniz</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                                    <input type="text" class="form-control" name="ad"  value="{{Users.uyeadi|raw}}">   
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class=" form-control-label">E-Mail Adresi Giriniz</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="fa fa-envelope-o"></i></div>
+                                    <input type="email" class="form-control" name="email"   value="{{Users.email| raw}}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class=" form-control-label">Şifre Giriniz</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="fa fa-key"></i></div>
+                                    <input type="password" class="form-control" name="sifre"  value="">
+                                </div>
+                            </div> 
+                            <div class="form-group"> 
+                                <button  type="submit" class="btn btn-success btn-flat m-b-30 m-t-30"  id="güncellebutonu" name="güncellebutonu">Güncelle</button>                         
+                     
+                    </div>
+                                   </form>
+                </div>
+            </div>
+        </div><!-- .animated -->
+    </div><!-- .content -->
+    </div>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.6/sweetalert2.min.css'>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.6/sweetalert2.js'></script>
+    <script>
+
+        $("#güncellebutonu").click(function () {
+
+            swal("Güncellendi", "Kullanıcı başarıyla güncellendi", "success");
+
+
+        });
+
+    </script>
+{% endblock %}

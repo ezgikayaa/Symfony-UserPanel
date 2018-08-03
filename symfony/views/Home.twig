@@ -1,0 +1,103 @@
+{% extends 'Layout.twig' %}
+{%block title %}Anasayfa{% endblock %} 
+{%block col %}
+  <div class="page-header float-right">
+                    <div class="page-title">
+                        <ol class="breadcrumb text-right">                             
+                         
+                        </ol>
+                    </div>
+                </div>
+    {%endblock %}
+{% block content %}   
+<div class="animated fadeIn">
+
+  <div class="row">
+            <div class="col-xs-12 col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        <strong>Bugünün Log Kayıtları</strong> 
+                          <a style="color:blue; font-size:13px;  width:auto; float:right;" href="{{url}}Log"  >Tümünü Görüntüle</a>
+                    </div>           
+                    
+                    <div class="card-body card-block">
+                     
+                      <div style="width:100% ;height: 500px; overflow-y: auto;overflow-x: hidden">
+                            <div class="form-group">  
+                             {% for Logs in Log %}         
+                                 {% for tarih in Tarih %}     
+                                 {% if Logs.Log_Tarih == tarih.Tarih %}         
+                                     
+                                     <div class="row" style="border-bottom: 1px solid #eee;padding: 10px 0px;margin-left: -10px;">
+                                         
+                                         <div class="col-md-9 ">
+                                             <button style="width:30px;margin:0;padding:0;" class="btn btn-sm btn-{{Logs.Log_ActionClass}}"><i class="fa fa-{{Logs.Log_Action}}" aria-hidden="true"></i></button>
+                                            &nbsp; <b>{{Logs.Log_UyeAdi}}</b> &nbsp;{{Logs.Log_Mesaj}}
+                                         </div>
+                                          <div class="col-md-3" style="text-align:right;padding-right: 30px">
+                                              {{Logs.Log_Tarih}}
+                                         </div>
+                                         
+                                     </div>
+                              
+                                 {% endif %}
+                                  {%endfor%}
+                                {% endfor %}
+                           
+                            </div>       
+                            </div>
+                      
+                    </div> 
+                   
+                </div>
+            </div>
+        </div>
+
+</div>
+
+                      
+
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.6/sweetalert2.min.css'>
+ <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.6/sweetalert2.js'></script>
+
+
+                    <script>
+                        function sil(id) {
+                            swal({
+                                title: 'Silmek İstediğinize Emin Misiniz?',
+                                text: "Silinen veriler geri alınamaz!",
+                                type: 'warning',
+                                buttons: true,
+                                dangerMode: true,
+                                showCancelButton: true,
+                                confirmButtonColor: '#3085d6',
+                                cancelButtonColor: '#d33',
+                                cancelButtonText: "Hayır,Silme!",
+                                confirmButtonText: 'Evet,Sil!',
+                                showLoaderOnConfirm: true
+
+                            })
+                                    .then(function () {
+
+                                        $.ajax({
+                                            type: "GET",
+                                            url: "{{url}}Users/DeleteUsers/" + id,
+                                            context: document.body,
+                                            global: false,
+                                            async: false,
+                                            success: function () {
+                                                swal("Silindi!", "Kullanıcı başarıyla silindi", "success");
+                                                setTimeout(function () {
+                                                    location.reload();
+                                                }, 1000);
+                                            }
+
+
+                                        })
+
+                                    });
+                        }
+
+                          </script>
+                                                  {%endblock %}

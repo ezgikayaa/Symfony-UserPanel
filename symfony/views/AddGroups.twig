@@ -1,0 +1,86 @@
+{% extends "Layout.twig" %}
+{%block title %}Grup Ekle{% endblock %} 
+{%block col %}
+    <div class="page-header float-right">
+        <div class="page-title">
+            <ol class="breadcrumb text-right">
+                <li><a href="{{url}}Home">Anasayfa</a></li>
+                <li><a href="{{url}}Groups">Kullanıcı Grupları</a></li>
+                <li class="active">Grup Ekle</li>
+            </ol>
+        </div>
+    </div>
+{%endblock %}
+{% block content %}
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12">
+               
+                <div class="card">
+                    <div class="card-header">
+                        <strong>Grup Ekle</strong> 
+                    </div>
+                    <div class="card-body card-block">
+                    <form method="post" class="panel">
+                            <div class="form-group">  
+                                <label class=" form-control-label">Grup Adı Giriniz</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="fa fa-users"></i></div>
+                                    <input type="text" class="form-control" name="grupadi" id="grupadi" required>
+                                </div>
+                            </div> 
+                        <div class="form-group">  
+                        <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th> Ekle</th>
+                                    <th> Sil </th>
+                                    <th>Düzenle</th>
+                                    <th>Görüntüle</th>
+                              
+                                </tr>
+                            </thead>
+                            <tbody>                                                       
+                                {%for modul in modul%}
+     <tr> 
+                                        <td style="width:200px;">{{modul.modul_adi}}</td>
+                                        <td style="width:200px;"><input type="checkbox" name="ekle[{{modul.id}}]" /></td>
+                                        <td style="width:200px;"><input type="checkbox" name="sil[{{modul.id}}]"  /> </td>
+                                        <td style="width:200px;"><input type="checkbox" name="duzenle[{{modul.id}}]" /> </td>
+                                        <td style="width:200px;"><input type="checkbox" name="goruntule[{{modul.id}}]" /> </td>
+                                       {%endfor%}
+</tr>
+                         
+                            </tbody>
+                        </table>
+
+                    </div>
+                 <div class="form-group"> 
+                                <button type="submit" class="btn btn-success btn-flat m-b-30 m-t-30"  id="kaydetbutonu2" name="kaydetbutonu2" >Kaydet</button> 
+                            </div>
+                    </form>
+                </div>
+                 
+  
+                              
+        </div>
+                                         
+                           
+            </div>
+        </div><!-- .animated -->
+    </div><!-- .content -->
+   
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.6/sweetalert2.min.css'>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.6/sweetalert2.js'></script>
+        <script>
+
+            $("#kaydetbutonu2").click(function () {
+
+                swal("Eklendi", "Grup başarıyla eklendi", "success");
+
+            });
+
+        </script>
+    {% endblock %}
